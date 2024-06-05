@@ -14,6 +14,7 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import Screenshots from 'electron-screenshots'
 import { createWorker } from 'tesseract.js'
+import { read } from 'fs'
 //import MouseEvents from 'global-mouse-events'
 let mainWindow
 let dragInterval
@@ -28,7 +29,7 @@ const fetchWithRateLimit = async (url, options) => {
   }
   lastRequest = currentTime
   console.log(clipboard.readText())
-  return await fetch(url, options)
+  return await fetch(new Request(url, options))
 }
 let screenshots
 
@@ -129,13 +130,17 @@ app.whenReady().then(() => {
     console.log('registration failed')
   }
 
-  const screenShotCancelCommand = globalShortcut.register('esc', async () => {
+  const screenShotCancelCommand = globalShortcut.register('CommandOrControl+C+B', async () => {
+    console.log('CommandOrControl+C+F')
+    mainWindow.webContents.send('summaryShortcut')
+  })
+
+  const summaryShort = globalShortcut.register('esc', async () => {
     console.log('Esc is pressed')
     if (mainWindow) {
       screenshots.endCapture()
     }
   })
-
   if (!screenShotCommand) {
     console.log('registration failed')
   }
@@ -247,6 +252,44 @@ app.whenReady().then(() => {
 
     return buffer
   })
+  ipcMain.handle('get-summary', async () => {
+    await getSummary()
+  })
+  const getSummary = async () => {
+    const url = 'https://api.together.xyz/v1/chat/completions'
+    const apiKey = '95bd465b25bb6e94615b6792cfe70580438799bf44e585583c5b908060f84a45'
+    const prompt = `summarize the given text like I'm 5: ${clipboard.readText()}`
+
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${apiKey}`
+    })
+
+    const data = {
+      model: 'META-LLAMA/LLAMA-3-8B-CHAT-HF',
+      max_tokens: 1024,
+      temperature: 0.69,
+      messages: [
+        {
+          role: 'system',
+          content: prompt
+        }
+      ]
+      // stream_tokens: true
+    }
+
+    const options = {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(data)
+    }
+
+    const res = await fetchWithRateLimit(url, options)
+    const body = await res.json()
+    const final = body.choices[0].message.content
+    console.log(final)
+    clipboard.writeText(final)
+  }
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the

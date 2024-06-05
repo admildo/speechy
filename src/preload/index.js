@@ -12,6 +12,9 @@ const api = {
   getText: async () => {
     return clipboard.readText('selection')
   },
+  getSummary: async () => {
+    return await ipcRenderer.invoke('get-summary')
+  },
   dragWindow: async (position) => {
     return await ipcRenderer.invoke('window-drag', position)
   },

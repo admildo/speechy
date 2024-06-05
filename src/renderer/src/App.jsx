@@ -136,6 +136,20 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    window.electron.ipcRenderer.on('summaryShortcut', async()=>{
+      await window.api.getSummary()
+     // await window.api.getRequest()
+    })
+  
+    return () => {
+      window.electron.ipcRenderer.on('summaryShortcut', async()=>{
+        await window.api.getSummary()
+       // await window.api.getRequest()
+      })
+    }
+  }, [])
+  
 
 
   return (
