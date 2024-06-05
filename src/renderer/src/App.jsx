@@ -138,14 +138,14 @@ function App() {
 
   useEffect(() => {
     window.electron.ipcRenderer.on('summaryShortcut', async()=>{
-      await window.api.getSummary()
-     // await window.api.getRequest()
+       await window.api.getSummary()
+        await handle()
     })
   
     return () => {
-      window.electron.ipcRenderer.on('summaryShortcut', async()=>{
+      window.electron.ipcRenderer.removeListener('summaryShortcut', async()=>{
         await window.api.getSummary()
-       // await window.api.getRequest()
+          await handle()
       })
     }
   }, [])

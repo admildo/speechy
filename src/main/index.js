@@ -258,7 +258,7 @@ app.whenReady().then(() => {
   const getSummary = async () => {
     const url = 'https://api.together.xyz/v1/chat/completions'
     const apiKey = '95bd465b25bb6e94615b6792cfe70580438799bf44e585583c5b908060f84a45'
-    const prompt = `summarize the given text like I'm 5: ${clipboard.readText()}`
+    const prompt = `summarize the given text : ${clipboard.readText()}`
 
     const headers = new Headers({
       'Content-Type': 'application/json',
@@ -284,7 +284,7 @@ app.whenReady().then(() => {
       body: JSON.stringify(data)
     }
 
-    const res = await fetchWithRateLimit(url, options)
+    const res = await fetch(new Request(url, options))
     const body = await res.json()
     const final = body.choices[0].message.content
     console.log(final)
