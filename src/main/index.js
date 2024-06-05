@@ -268,7 +268,7 @@ app.whenReady().then(() => {
     const data = {
       model: 'META-LLAMA/LLAMA-3-8B-CHAT-HF',
       max_tokens: 1024,
-      temperature: 0.69,
+      temperature: 0.79,
       messages: [
         {
           role: 'system',
