@@ -180,9 +180,7 @@ app.whenReady().then(() => {
     screenshots.on('ok', async (e, buffer, bounds) => {
       console.log('ok', buffer, bounds)
 
-      const worker = await createWorker('eng')
-
-      ;(async () => {
+      const worker = await createWorker('eng')(async () => {
         const {
           data: { text }
         } = await worker.recognize(buffer)
