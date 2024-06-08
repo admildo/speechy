@@ -273,7 +273,6 @@ app.whenReady().then(() => {
           content: prompt
         }
       ]
-      // stream_tokens: true
     }
 
     const options = {
