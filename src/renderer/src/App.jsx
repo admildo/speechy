@@ -27,7 +27,7 @@ const PlayAudio = ({element,handlePlay,togglePlayer,status})=>{
       element.current.play()
     }
    }else{
-     //element.current.play()
+    
      handlePlay()
    }
   }

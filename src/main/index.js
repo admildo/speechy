@@ -14,7 +14,7 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import Screenshots from 'electron-screenshots'
 import { createWorker } from 'tesseract.js'
-import { read } from 'fs'
+
 //import MouseEvents from 'global-mouse-events'
 let mainWindow
 let dragInterval
@@ -94,10 +94,10 @@ app.whenReady().then(() => {
       operation_undo_title: 'Undo',
       operation_mosaic_title: 'Mosaic',
       operation_text_title: 'Text',
-      operation_brush_title: 'Brush',
-      operation_arrow_title: 'Arrow',
-      operation_ellipse_title: 'Ellipse',
-      operation_rectangle_title: 'Rectangle'
+      operation_brush_title: 'Brush'
+      // operation_arrow_title: 'Arrow',
+      //  operation_ellipse_title: 'Ellipse',
+      //  operation_rectangle_title: 'Rectangle'
     },
     logger: false
   })
