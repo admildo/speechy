@@ -127,7 +127,7 @@ function App() {
     }
 
    
-    // Listen for shortcut trigger from the main process
+   
     window.electron.ipcRenderer.on('shortcut-triggered',handleShortcut);
 
     // Clean up event listener ocn unmount
