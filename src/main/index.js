@@ -157,11 +157,6 @@ app.whenReady().then(() => {
     console.log(clipboard.readText())
   })
 
-  /*
-  MouseEvents.on('mousemove', async (e) => {
-    console.log(e)
-  })*/
-
   ipcMain.handle('window-drag', async (position) => {
     dragInterval = setInterval(() => {
       mousePos = Robot.getMousePos()

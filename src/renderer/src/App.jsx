@@ -154,10 +154,14 @@ function App() {
 
   return (
     <>
+
     <div className='w-full flex flex-col h-screen '>
+<div className='w-[200px] h-[50px] bg-red-50'>
 
 
-<div ref={comp} onClick={()=> handleDrag()} className={'w-[49px] h-[220px] bg-gray-900/90 p-3 rounded-3xl flex flex-col justify-between items-center absolute self-center'}>
+</div>
+
+<div ref={comp} onClick={()=> handleDrag()} className={'w-[49px] h-[220px] bg-gray-900/90 p-3 rounded-3xl flex flex-col justify-between items-center ml-2 absolute self-end'}>
 
   <PlayAudio handlePlay={handle} togglePlayer={togglePlayer} status={playing} element={audioRef}/>
 
