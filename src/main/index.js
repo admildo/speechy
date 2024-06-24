@@ -185,25 +185,23 @@ app.whenReady().then(() => {
         await worker.terminate()
       })()
     })
-    // 点击取消按钮回调事件
+
     screenshots.on('cancel', () => {
       console.log('cancel', 'cancel1')
     })
     screenshots.on('cancel', (e) => {
-      // 执行了preventDefault
-      // 点击取消不会关闭截图窗口
       e.preventDefault()
       console.log('cancel', 'cancel2')
     })
-    // 点击保存按钮回调事件
+
     screenshots.on('save', (e, buffer, bounds) => {
       console.log('save', buffer, bounds)
       console.log(new Blob([buffer], { type: 'image/png' }))
     })
-    // 保存后的回调事件
+
     screenshots.on('afterSave', (e, buffer, bounds, isSaved) => {
       console.log('afterSave', buffer, bounds)
-      console.log('isSaved', isSaved) // 是否保存成功
+      console.log('isSaved', isSaved)
     })
   })
 
