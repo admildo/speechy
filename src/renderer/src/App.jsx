@@ -39,7 +39,7 @@ const PlayAudio = ({element,handlePlay,togglePlayer,status})=>{
 }
 
 
-function App() {
+export  default function App() {
   const audioRef = useRef(null)
   const comp = useRef(null)
   const [playing,setPlaying] = useState(false)
@@ -155,7 +155,7 @@ function App() {
   return (
     <>
 
-    <div className='w-full flex flex-col h-screen '>
+    <div className='w-full flex flex-col h-screen bg-yellow-200'>
 <div className='w-[200px] h-[50px] bg-red-50'>
 
 
@@ -197,5 +197,5 @@ function App() {
   )
 }
 
-export default App
+
 

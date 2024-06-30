@@ -35,9 +35,10 @@ let screenshots
 
 function createWindow() {
   // Create the browser window.
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize
   mainWindow = new BrowserWindow({
-    width: 50,
-    height: 230,
+    width: width,
+    height: height,
     show: false,
     frame: false,
     autoHideMenuBar: true,
@@ -74,7 +75,7 @@ function createWindow() {
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
     mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
   } else {
-    mainWindow.loadFile(join(__dirname, '../renderer/settings.html'))
+    mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
 }
 

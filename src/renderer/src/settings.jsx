@@ -2,10 +2,10 @@ import './assets/main.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
+import AppSettings from './AppSettings'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <AppSettings />
   </React.StrictMode>
 )
