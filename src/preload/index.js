@@ -15,11 +15,11 @@ const api = {
   getSummary: async () => {
     return await ipcRenderer.invoke('get-summary')
   },
-  dragWindow: async (position) => {
-    return await ipcRenderer.invoke('window-drag', position)
+  resizeWindow: async (position) => {
+    return await ipcRenderer.invoke('resize-window', position)
   },
-  stopDrag: async () => {
-    return await ipcRenderer.invoke('stop-drag')
+  forceRedrawn: async () => {
+    return await ipcRenderer.invoke('force-redraw')
   }
 }
 
