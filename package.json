@@ -20,6 +20,7 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
+    "better-sqlite3": "^11.1.2",
     "electron-screenshot": "^1.0.5",
     "electron-screenshots": "^0.5.26",
     "electron-updater": "^6.1.7",
@@ -27,7 +28,9 @@
     "iconsax-react": "^0.0.8",
     "node-addon-api": "^8.0.0",
     "node-mac-accessibility": "^1.0.3",
+    "openai": "^4.53.0",
     "robotjs": "^0.6.0",
+    "sqlite3": "^5.1.7",
     "tesseract.js": "^5.1.0"
   },
   "devDependencies": {
@@ -37,6 +40,7 @@
     "autoprefixer": "^10.4.19",
     "electron": "^28.2.0",
     "electron-builder": "^24.9.1",
+    "electron-rebuild": "^3.2.9",
     "electron-vite": "^2.0.0",
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.33.2",

@@ -21,6 +21,8 @@ const api = {
   forceRedrawn: async () => {
     return await ipcRenderer.invoke('force-redraw')
   }
+  //query: (sql, params) => db.prepare(sql).all(params),
+  //execute: (sql, params) => db.prepare(sql).run(params)
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to

@@ -14,6 +14,21 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import Screenshots from 'electron-screenshots'
 import { createWorker } from 'tesseract.js'
+import sqlite3 from 'sqlite3'
+
+const db = new sqlite3.Database('./db.db')
+
+const resdb = db.run(`CREATE TABLE IF NOT EXISTS keys (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        key TEXT NOT NULL
+      );`)
+
+const vali = db.get('SELECT * FROM keys', (error, row) => {
+  console.log(row.name + ' ' + row.key)
+})
+
+console.log(vali)
 
 //import MouseEvents from 'global-mouse-events'
 let mainWindow
@@ -42,7 +57,7 @@ function createWindow() {
 
   mainWindow = new BrowserWindow({
     width: 50, //width / 1.7,
-    height: 229, //height / 1.5,
+    height: 250, //height / 1.5,
     show: false,
     frame: false,
     autoHideMenuBar: true,
@@ -254,7 +269,7 @@ app.whenReady().then(() => {
 
     const text = clipboard.readText()
 
-    const url = 'https://api.deepgram.com/v1/speak?model=aura-athena-en'
+    const url = 'https://api.deepgram.com/v1/speak?model=aura-stella-en'
     const apiKey = '1360297d19ef908229f075a039244eb3ec22f67c'
 
     const options = {

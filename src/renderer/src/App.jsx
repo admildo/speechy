@@ -1,7 +1,7 @@
 import Versions from './components/Versions'
 import electronLogo from './assets/electron.svg'
 import { useState,useRef,useEffect } from 'react'
-import { Play,Pause,Setting2,Image,Notepad,Sound,Lock,VoiceSquare,Box } from 'iconsax-react';
+import { Play,Pause,Setting2,Image,Notepad,Sound,Lock,VoiceSquare,Box,Book } from 'iconsax-react';
 
 
 const PauseAudio = ({element})=>{
@@ -60,9 +60,9 @@ export  default function App() {
   const toggleSettings = async () => {
     window.api.forceRedrawn()
     setSettings((val)=>!val)
-    const uiPosition = {width: 615, height: 353, x: 800, y: 230}
+    const uiPosition = {width: 625, height: 353, x: 800, y: 186}
     console.log('Sending resize request with position:', uiPosition)
-    const uiPosition2 = {width:50,height:229,x:1375,y:270}
+    const uiPosition2 = {width:50,height:229,x:1375,y:250}
     if(settingsActive){
       const result = await window.api.resizeWindow(uiPosition2)
     }else{
@@ -163,7 +163,7 @@ export  default function App() {
     <>
 
     <div className='w-full flex flex-col h-screen  justify-center'>
-<div className={`${settingsActive?'flex row':'hidden'} w-[88%] h-[350px] bg-transparent shadow-2xl   rounded-xl    transform transition-transform duration-300 ease-in-out`}>
+<div className={`${settingsActive?'flex row translate-x-0':'translate-x-full hidden'} w-[88%] h-[350px] bg-transparent shadow-2xl   rounded-xl  transform transition-transform duration-300 ease-in-out`}>
 
 <div className='w-1/3 bg-[#131313] rounded-bl-2xl rounded-tl-2xl   p-2 pt-8 '>
 <div className='mb-4 flex row text-gray-300 text-sm items-center rounded-md content-center p-2 hover:bg-gray-600'>
@@ -184,6 +184,12 @@ export  default function App() {
 
 </div>
 
+<div className='mb-4 flex row text-gray-300 text-sm items-center rounded-md content-center p-2 hover:bg-gray-600'>
+  <Book size={'17'} className='text-gray-300' />
+  <span className='ml-2 text-[0.78rem] '>Help</span>
+
+</div>
+
 
 </div>
 
@@ -198,7 +204,7 @@ export  default function App() {
 
 
 <div className='pb-3 pl-8 '>
-  <h2 className='text-[0.75rem] font-bold mb-4 text-white'>Descript</h2>
+  <h2 className='text-[0.75rem] font-bold mb-4 text-white'>Together AI</h2>
   <input className='w-[90%] outline-[gray] p-2 rounded-md  bg-[#272727] text-gray-400 text-[0.78rem]' placeholder='key' type="password" name="" id="" />
 
 </div>
